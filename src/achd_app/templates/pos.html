@@ -1,0 +1,393 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>acdh-service</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <style>
+    body {
+      overflow-x: hidden;
+    }
+    .form-group {
+      margin-bottom: 1rem;
+    }
+
+    .btn-logo {
+      background-color: #6f42c1;
+      color: white;
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .btn-logo:hover {
+      background-color: #5a34a4;
+      color: white;
+    }
+  </style>
+</head>
+
+<body>
+
+  <div class="container mt-5">
+    <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+      <div class="container">
+        <button type="button" class="btn  btn-logo fw-bold">ACDH Service</button>
+        <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+          <span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+          <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'index' %}">ACCUEIL</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'temo' %}">Témoignages</a></li>
+            <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'propos' %}">À propos</a></li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+
+    <div class="container my-5">
+      <div class="card mx-auto" style="max-width: 100%; max-width: 800px;">
+        <div class="card-header text-center">
+          <h3 class="fw-bold my-3 fs-2 text-primary">Postuler maintenant</h3>
+        </div>
+        <div class="card-body">
+          <form method="POST" action="{% url 'postuler' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+
+            <!-- Choix de l'offre -->
+            <div class="form-group">
+                <label for="choixOffre" class="fw-bold text-danger">Choisissez votre offre :</label>
+                <select class="form-control" id="choixOffre" name="choixOffre" required>
+                  <option value="">Sélectionnez une option</option>
+                  <option value="Visa de residence au Canada">Visa de résidence au Canada</option>
+                  <option value="Visa de travail au Canada">Visa de travail au Canada</option>
+                  <option value="Visa d'etude au Canada">Visa d'étude au Canada</option>
+                  <option value="Visa de visite au Canada">Visa de visite au Canada</option>
+                </select>
+              </div>
+
+
+            <!-- Nom et Prénom en lignes séparées sur petits écrans -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="nom" class="fw-bold text-danger">Nom :</label>
+                <input type="text" class="form-control" id="nom" name="nom" placeholder="Entrez votre nom" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="prenom" class="fw-bold text-danger">Prénom :</label>
+                <input type="text" class="form-control" id="prenom" name="prenom" placeholder="Entrez votre prénom" required>
+              </div>
+            </div>
+
+            <!-- Age et Profession -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="age" class="fw-bold text-danger">Age :</label>
+                <input type="number" class="form-control" id="age" name="age" placeholder="Entrez votre âge" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="profession" class="fw-bold text-danger">Profession :</label>
+                <input type="text" class="form-control" id="profession" name="profession" placeholder="Entrez votre profession" required>
+              </div>
+            </div>
+
+            <!-- Pays de résidence et Nationalité -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="residence" class="fw-bold text-danger">Pays de résidence :</label>
+                <input type="text" class="form-control" id="residence" name="residence" placeholder="Entrez votre pays de résidence" required> 
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="nationalite" class="fw-bold text-danger">Nationalité :</label>
+                <input type="text" class="form-control" id="nationalite" name="nationalite" placeholder="Entrez votre nationalité" required>
+              </div>
+            </div>
+
+            <!-- Lieu et Date de Naissance -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="lieuNaissance" class="fw-bold text-danger">Lieu de Naissance :</label>
+                <input type="text" class="form-control" id="lieuNaissance" name="lieuNaissance" placeholder="Entrez votre lieu de naissance" required>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="dateNaissance" class="fw-bold text-danger">Date de naissance :</label >
+                <input type="date" class="form-control" id="dateNaissance" name="dateNaissance" required> 
+              </div>
+            </div>
+
+            <!-- Sexe et Téléphone -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="sexe" class="fw-bold text-danger">Sexe :</label>
+                <select class="form-control" id="sexe" name="sexe" required>
+                  <option value="">Sélectionnez une option</option>
+                  <option value="Masculin">Masculin</option>
+                  <option value="Feminin">Féminin</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="tel" class="fw-bold text-danger">Téléphone :</label>
+                <input type="tel" class="form-control" id="tel" name="tel" placeholder="Entrez votre numéro de téléphone" required>
+              </div>
+            </div>
+
+            <!-- Photo de profil -->
+            <div class="form-group">
+              <label for="photo" class="fw-bold text-danger">Photo d'identité :</label>
+              <input type="file" class="form-control-file" id="photo" name="photo" required>
+            </div>
+
+            <!-- Email, Poids, Taille, Groupe sanguin -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="email" class="fw-bold text-danger">Email :</label>
+                <input type="email" class="form-control" id="email" name="email" placeholder="Entrez votre email" required>
+              </div>
+              <div class="col-md-3 form-group">
+                <label for="poids" class="fw-bold text-danger">Poids :</label>
+                <input type="number" class="form-control" id="poids" name="poids" placeholder="Entrez votre poids (kg)" step="0.01" min="0" required>
+              </div>
+              <div class="col-md-3 form-group">
+                <label for="taille" class="fw-bold text-danger">Taille :</label>
+                <input type="number" class="form-control" id="taille" name="taille" placeholder="Entrez votre taille (cm)" step="0.01" min="0" required>
+            </div>
+            
+            </div>
+            <div class="form-group">
+              <label for="sang" class="fw-bold text-danger">Groupe sanguin :</label>
+              <input type="text" class="form-control" id="groupesang" name="groupesang" placeholder="Entrez votre groupe sanguin" required>
+            </div>
+
+            <!-- Situation Matrimoniale -->
+            <div class="form-group">
+              <label for="situation" class="fw-bold text-danger">Situation Matrimoniale :</label>
+              <select class="form-control" id="situationmatri" name="situationmatri" required>
+                <option value="">Sélectionnez une option</option>
+                <option value="Celibataire">Célibataire</option>
+                <option value="Marie(e)">Marié(e)</option>
+                <option value="Concubin(e)">Concubin(e)</option>
+                <option value="Veuf(ve)">Veuf(ve)</option>
+                <option value="Separe(e)">Séparé(e)</option>
+              </select>
+            </div>
+
+            <!-- Nombre d'enfants et Compte bancaire -->
+            <div class="form-group">
+              <label for="enfants" class="fw-bold text-danger">Nombre d'enfants en charge :</label>
+              <input type="number" class="form-control" id="nombreenfants" name="nombreenfants" required>
+            </div>
+            <div class="form-group">
+              <label for="compte" class="fw-bold text-danger">Possédez-vous un compte bancaire ? :</label>
+              <select class="form-control" id="comptebancaire" name="comptebancaire" required>
+                <option value="">Sélectionnez une option</option>
+                <option value="Oui">Oui</option>
+                <option value="Non">Non</option>
+              </select>
+              <input type="text" class="form-control mt-2" id="precibanque" name="precibanque"  placeholder="Si oui, lequel ?">
+            </div>
+
+            <!-- Code postal et Adresse -->
+            <div class="form-group">
+              <label for="codePostal" class="fw-bold text-danger">Code postal :</label>
+              <input type="text" class="form-control" id="codePostal" name="codePostal" placeholder="Entrez votre code postal" required> 
+            </div>
+            <div class="form-group">
+              <label for="adresse" class="fw-bold text-danger">Adresse :</label>
+              <textarea class="form-control" id="adresse" name="adresse" rows="2" placeholder="Entrez votre adresse" required></textarea>
+            </div>
+
+            <!-- Santé et Passeport -->
+            <div class="row">
+              <div class="col-md-6 form-group">
+                <label for="sante" class="fw-bold text-danger">Santé :</label>
+                <select class="form-control" id="sante" name="sante" required>
+                  <option value="">Sélectionnez une option</option>
+                  <option value="APTE">APTE</option>
+                  <option value="INAPTE">INAPTE</option>
+                </select>
+              </div>
+              <div class="col-md-6 form-group">
+                <label for="passeport" class="fw-bold text-danger">N° de Passeport :</label>
+                <input type="text" class="form-control" id="npasseport" name="npasseport" placeholder="Entrez votre numéro de passeport" required>
+                <input type="file" class="form-control-file mt-2" id="photoPasseport" name="photoPasseport" required>
+              </div>
+            </div>
+
+            <!-- Carte d'identité -->
+            <div class="form-group">
+              <label for="idCard" class="fw-bold text-danger">N° ID CARD :</label>
+              <input type="text" class="form-control" id="idCard" name="idCard" placeholder="Entrez votre numéro de carte d'identité" required>
+              <input type="file" class="form-control-file mt-2" id="photoID" name="photoID" required>
+            </div>
+
+
+            <div class="form-group">
+                <label for="sang" class="fw-bold text-danger">Choix de travail au Canada :</label>
+                <input type="text" class="form-control" id="choixdetravail" name="choixdetravail" placeholder="Choix de travail au Canada :" required>
+              </div>
+
+
+            
+              <div class="form-group">
+                <label for="situation" class="fw-bold text-danger">Durée de travail :</label>
+                <select class="form-control" id="d_travail" name="d_travail" required>
+                  <option value="">Sélectionnez une option</option>
+                  <option value="2">2</option>
+                  <option value="4">4</option>
+                  <option value="6">6</option>
+                  <option value="8">8</option>
+                  <option value="Autre">Autre</option>
+                </select>
+              </div>
+
+              <label class="fw-bold text-danger">Motif du voyage :</label>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="tourisme" id="motifTourisme" name="motifVoyage[]">
+                <label class="form-check-label" for="motifTourisme">Tourisme</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="affaires" id="motifAffaires" name="motifVoyage[]">
+                <label class="form-check-label" for="motifAffaires">Affaires</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="etude" id="motifEtude" name="motifVoyage[]">
+                <label class="form-check-label" for="motifEtude">Études</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Visite de la famille" id="motifFamille" name="motifVoyage[]">
+                <label class="form-check-label" for="motifFamille">Visite de la famille</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Soins médicaux" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Soins médicaux</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Conditions de vie misérable en Afrique" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Conditions de vie misérable en Afrique</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Recherche d'un bon travail" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Recherche d'un bon travail</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Rejoindre un(e) ami(e) ou une famille" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Rejoindre un(e) ami(e) ou une famille</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Recherche du mieux être" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Recherche du mieux être</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Voyage pour changer de milieu" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Voyage pour changer de milieu</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Avoir plus d'expériences" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Avoir plus d'expériences</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Perte d'emploi" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Perte d'emploi</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Quête de meilleure condition salariale" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Quête de meilleure condition salariale</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Sortie de stage" id="motifSoins" name="motifVoyage[]">
+                <label class="form-check-label" for="motifSoins">Sortie de stage</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Longue période d'inactivité" id="motifSoins" name="motifVoyage[]"> 
+                <label class="form-check-label" for="motifSoins">Longue période d'inactivité</label>
+              </div>
+              <div class="form-check">
+                <input class="form-check-input" type="checkbox" value="Autre" id="motifAutre" name="motifVoyage[]">
+                <label class="form-check-label" for="motifAutre">Autre</label>
+              </div>
+
+
+              <div class="form-group">
+                <label for="sang" class="fw-bold text-danger">Moyen par lequel vous souhaiterez payer les frais d'incription :</label>
+                <input type="text" class="form-control" id="moyenPaiement" name="moyenPaiement" placeholder="Preciser le moyen de paienment :" required>
+              </div>
+
+              
+              
+
+            <div class="container  ">
+                <em class="about-text">Plus de 600 jeunes dans divers domaines sont actuellement recherchés par Action canadienne pour les développements humanitaires (ACDH).La procédure prendra 3 mois.</em>
+                <em>Les postulants auront accès à tous les avantages, y compris les procédures d'immigration : le passeport professionnel, le permis de travail, la garantie de contrat, les billets d'avion, l'assurance maladie et la restauration.</em>
+              </div>
+
+
+            
+              <div class="alert alert-danger d-flex align-items-center container" role="alert">
+                <svg class="bi flex-shrink-0 me-2" width="24" height="24" role="img" aria-label="Danger:"><use xlink:href="#exclamation-triangle-fill"/></svg>
+                <div class="text-center fw-bold">
+                    <p class="text-center">Les frais d'inscription s'élèvent à 600  dollars  USD payable sur trois tranches.</p>
+                </div>
+              </div>
+            
+            
+
+            
+
+            <!-- Bouton de soumission -->
+            <button type="submit" class="btn btn-primary w-100">Soumettre</button>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+  
+
+  
+
+  <footer class="bg-dark text-white pt-4">
+    <div class="container">
+        <div class="row">
+
+            <div class="col-md-4">
+                <h5>À propos de nous</h5>
+                <p>Nous sommes une organisation dédiée à fournir des services de qualité et à soutenir la communauté. Rejoignez-nous pour faire une différence.</p>
+            </div>
+
+
+            <div class="col-md-4">
+                <h5>Liens utiles</h5>
+                <ul class="list-unstyled">
+                    <li><a href="{% url 'index' %}"  class="text-white text-decoration-none">Accueil</a></li>
+                    <li><a href="{% url 'temo' %}" class="text-white text-decoration-none">Témoignages</a></li>
+                    <li><a href="{% url 'propos' %}" class="text-white text-decoration-none">À propos</a></li>
+                </ul>
+            </div>
+
+
+            <div class="col-md-4">
+                <h5>Suivez-nous</h5>
+        
+            </div>
+        </div>
+
+        <hr class="bg-light">
+
+        <div class="row">
+            <div class="col text-center">
+                <p class="mb-0">&copy; 2024 ACDH Service. Tous droits réservés.</p>
+            </div>
+        </div>
+    </div>
+</footer>
+
+
+  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

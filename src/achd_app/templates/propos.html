@@ -1,0 +1,202 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACDH Service</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+  <style>
+    .about-section {
+      padding: 40px 0;
+    }
+    .about-title {
+      font-size: 1.5rem;
+      font-weight: bold;
+    }
+    .about-text {
+      color: #6c757d;
+      font-size: 1rem;
+      line-height: 1.6;
+    }
+    .quote-icon {
+      color: #17a2b8; /* Customize color for the quote icon */
+      font-size: 2rem;
+    }
+    .image-container img {
+      border-radius: 10px;
+      max-width: 100%;
+      height: auto;
+    }
+
+    .btn-logo {
+        background-color: #6f42c1;
+        color: white;
+        border-radius: 30px;
+        padding: 8px 20px;
+        font-size: 1.1rem;
+        font-weight: bold;
+      }
+      .btn-logo:hover {
+        background-color: #5a34a4;
+        color: white;
+      }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+    <div class="container-fluid padding-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+            <button type="button" class="btn  btn-logo fw-bold">ACDH Service</button>
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'index' %}">ACCUEIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'temo' %}">Témoignages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'propos' %}">À propos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    </div>
+
+
+    <!-- Témoignages et Opportunités Section -->
+    <div class="container main-content">
+        <h2 class="text-center fw-bold text-primary">A propos de Nous</h2>
+        <p class="text-center text-muted">Mon parcours
+        </p> 
+    </div>
+
+    <div class="container about-section">
+        <div class="row align-items-center">
+          <!-- Left Column: Image -->
+          <div class="col-md-6 image-container">
+            <img src="{% static 'images/bg.webp' %}" alt="ACDH Building">
+          </div>
+          
+          <!-- Right Column: Text -->
+          <div class="col-md-6">
+            <h2 class="about-title fw-bold">ACDH Service International</h2>
+            <p class="about-text"><span class="quote-icon">&ldquo;</span> L'ACDH Service est une organisation de charité de droit au CANADA à vocation internationale, dont les buts et les objectifs sont entre autres d'assister les individus et les organisations de par le monde.</p>
+            <p class="about-text">À travers des prêts pour les affaires, l'éducation, le développement économique et la protection de l'environnement, de soutenir les organisations qui s'intéressent aux problèmes d'ordre social, économique et environnemental et divers projets humanitaires grâce aux dons et financements, d'informer, d’éduquer et de sensibiliser.</p>
+            <p class="about-text">les populations en vue de limiter la propagation du VIH/SIDA, de soutenir et de défendre les causes de ceux qui sont déjà infectés et affectés par cette pandémie du siècle ; de promouvoir le Bien-être de l'Humanité à travers le renforcement des capacités des organisations charitables afin de leur permettre d'élaborer et d'exécuter des programmes viables.</p>
+            <p class="about-text">En outre, ACDH Service offre des opportunités d'emploi, bourses d'études, Long Séjours Visa.</p>
+          </div>
+        </div>
+      </div>
+
+
+    <div class="container my-4">
+        <div class="d-grid gap-2">
+            <a href="{% url 'postuler' %}" class="btn btn-primary fw-bold" role="button">
+                Cliquez ici pour postuler.
+            </a>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-white pt-4 ">
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-md-4">
+                    <h5>À propos de nous</h5>
+                    <p>Nous sommes une organisation dédiée à fournir des services de qualité et à soutenir la communauté. Rejoignez-nous pour faire une différence.</p>
+                </div>
+    
+    
+                <div class="col-md-4">
+                    <h5>Liens utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'index' %}"  class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="{% url 'temo' %}" class="text-white text-decoration-none">Témoignages</a></li>
+                        <li><a href="{% url 'propos' %}" class="text-white text-decoration-none">À propos</a></li>
+                    </ul>
+                </div>
+    
+    
+                <div class="col-md-4">
+                    <h5>Suivez-nous</h5>
+            
+                </div>
+            </div>
+    
+            <hr class="bg-light">
+    
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">&copy; 2024 ACDH Service. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+<style>
+    /* Offset main content to avoid overlap with fixed navbar */
+.main-content {
+    padding-top: 120px; /* Adjust as needed */
+}
+
+/* Center the testimonials section */
+.testimonial {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* Testimonial image styling */
+.testimonial img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #6c63ff;
+    padding: 2px;
+}
+
+/* Hover effect for testimonials */
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+/* Heading and text styling */
+.testimonial h5 {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    font-weight: 700;
+    color: #333;
+}
+
+.testimonial p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+</style>
+
+  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

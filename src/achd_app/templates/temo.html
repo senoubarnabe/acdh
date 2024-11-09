@@ -1,0 +1,203 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACDH Service</title>
+  <link rel="stylesheet" href="{% static 'css/style.css' %}">
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+  <style>
+    .btn-logo {
+      background-color: #6f42c1;
+      color: white;
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .btn-logo:hover {
+      background-color: #5a34a4;
+      color: white;
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+    <div class="container-fluid padding-top">
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+            <button type="button" class="btn  btn-logo fw-bold">ACDH Service</button>
+        
+            <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarTogglerDemo02" aria-controls="navbarTogglerDemo02" aria-expanded="false" aria-label="Toggle navigation">
+                 <span class="navbar-toggler-icon"></span>
+            </button>
+
+            <div class="collapse navbar-collapse" id="navbarTogglerDemo02">
+                <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'index' %}">ACCUEIL</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'temo' %}">Témoignages</a>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link fw-bold" href="{% url 'propos' %}">À propos</a>
+                    </li>
+                </ul>
+            </div>
+        </div>
+        </nav>
+    </div>
+
+  <!-- Témoignages et Opportunités Section -->
+    <div class="container main-content">
+        <h2 class="text-center fw-bold text-primary">Témoignages et opportunités</h2>
+        <p class="text-center text-muted">Témoignages</p>
+        <div class="row">
+            <div class="col-md-6">
+                <div class="testimonial text-center">
+                    <img src="{% static 'images/cosi.jpg' %}" alt="Cossi Didier" class="rounded-circle mb-3">
+                    <h5>COSSI DIDIER</h5>
+                    <p class="text-muted">"J'ai pu démarrer mes études gratuitement grâce à lui ici à Laval."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial text-center">
+                    <img src="{% static 'images/4a.jpg' %}" alt="Louis Davi" class="rounded-circle mb-3">
+                    <h5>Louis DAVI</h5>
+                    <p class="text-muted">"Partager avec moi le monde, ACDH est installé ici à Ottawa pour ce qui ne crois pas et nous sommes fiers de lui."</p>
+                </div>
+            </div>
+                <div class="col-md-6">
+                    <div class="testimonial text-center">
+                    <img src="{% static 'images/2a.jpg' %}" alt="Fatima Cheri Ticko" class="rounded-circle mb-3">
+                    <h5>FATIMA CHERI TICKO</h5>
+                    <p class="text-muted">"Je suis sénégalaise et je travaille au Canada comme infirmière d'état, ACDH m'a montré la voie et moins de dépenses."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial text-center">
+                    <img src="{% static 'images/5a.png' %}" alt="Jules Bertrand" class="rounded-circle mb-3">
+                    <h5>Jules Bertrand</h5>
+                    <p class="text-muted">"Les mots me manquent pour remercier ACDH car j'ai pu déplacer toute ma famille jusqu'au domicile, je vous remercie."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial text-center">
+                    <img src="{% static 'images/3a.jpg' %}" alt="Jules Bertrand" class="rounded-circle mb-3">
+                    <h5>esthevi gueso</h5>
+                    <p class="text-muted">"je suis burkinabé et je travail comme conducteur a l'aéroport , ACDH je m'incline ."</p>
+                </div>
+            </div>
+            <div class="col-md-6">
+                <div class="testimonial text-center">
+                    <img src="{% static 'images/1a.png' %}" alt="Jules Bertrand" class="rounded-circle mb-3">
+                    <h5>Marion Leroy</h5>
+                    <p class="text-muted">"Je sui canadienne et j'ai aussi bénéficier de l'offre de cette fondation ."</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container my-4">
+        <div class="d-grid gap-2">
+            <a href="{% url 'postuler' %}" class="btn btn-primary fw-bold" role="button">
+                Cliquez ici pour postuler.
+            </a>
+        </div>
+    </div>
+
+
+    <footer class="bg-dark text-white pt-4 ">
+        <div class="container">
+            <div class="row">
+    
+                <div class="col-md-4">
+                    <h5>À propos de nous</h5>
+                    <p>Nous sommes une organisation dédiée à fournir des services de qualité et à soutenir la communauté. Rejoignez-nous pour faire une différence.</p>
+                </div>
+    
+    
+                <div class="col-md-4">
+                    <h5>Liens utiles</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="{% url 'index' %}"  class="text-white text-decoration-none">Accueil</a></li>
+                        <li><a href="{% url 'temo' %}" class="text-white text-decoration-none">Témoignages</a></li>
+                        <li><a href="{% url 'propos' %}" class="text-white text-decoration-none">À propos</a></li>
+                    </ul>
+                </div>
+    
+    
+                <div class="col-md-4">
+                    <h5>Suivez-nous</h5>
+            
+                </div>
+            </div>
+    
+            <hr class="bg-light">
+    
+            <div class="row">
+                <div class="col text-center">
+                    <p class="mb-0">&copy; 2024 ACDH Service. Tous droits réservés.</p>
+                </div>
+            </div>
+        </div>
+    </footer>
+
+
+
+
+
+<style>
+    /* Offset main content to avoid overlap with fixed navbar */
+.main-content {
+    padding-top: 120px; /* Adjust as needed */
+}
+
+/* Center the testimonials section */
+.testimonial {
+    background-color: #f9f9f9;
+    padding: 20px;
+    border-radius: 8px;
+    box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+    margin-bottom: 30px;
+    transition: transform 0.3s ease;
+}
+
+/* Testimonial image styling */
+.testimonial img {
+    width: 100px;
+    height: 100px;
+    object-fit: cover;
+    border: 3px solid #6c63ff;
+    padding: 2px;
+}
+
+/* Hover effect for testimonials */
+.testimonial:hover {
+    transform: translateY(-5px);
+}
+
+/* Heading and text styling */
+.testimonial h5 {
+    font-size: 1.2rem;
+    margin-top: 15px;
+    font-weight: 700;
+    color: #333;
+}
+
+.testimonial p {
+    font-size: 0.9rem;
+    color: #666;
+    line-height: 1.4;
+}
+
+</style>
+
+  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>

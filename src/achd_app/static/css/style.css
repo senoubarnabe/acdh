@@ -1,0 +1,42 @@
+/* Offset main content to avoid overlap with fixed navbar */
+.main-content {
+  padding-top: 120px; /* Adjust as needed */
+}
+
+/* Center the testimonials section */
+.testimonial {
+  background-color: #f9f9f9;
+  padding: 20px;
+  border-radius: 8px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  margin-bottom: 30px;
+  transition: transform 0.3s ease;
+}
+
+/* Testimonial image styling */
+.testimonial img {
+  width: 100px;
+  height: 100px;
+  object-fit: cover;
+  border: 3px solid #6c63ff;
+  padding: 2px;
+}
+
+/* Hover effect for testimonials */
+.testimonial:hover {
+  transform: translateY(-5px);
+}
+
+/* Heading and text styling */
+.testimonial h5 {
+  font-size: 1.2rem;
+  margin-top: 15px;
+  font-weight: 700;
+  color: #333;
+}
+
+.testimonial p {
+  font-size: 0.9rem;
+  color: #666;
+  line-height: 1.4;
+}

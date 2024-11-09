@@ -1,0 +1,142 @@
+{% load static %}
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>ACDH Service</title>
+  <link rel="stylesheet" href="{% static 'bootstrap/bootstrap.min.css' %}">
+
+  <style>
+    /* Styles pour le body et le conteneur principal pour aligner le contenu et le footer */
+    body, html {
+      height: 100%;
+      margin: 0;
+      display: flex;
+      flex-direction: column;
+    }
+
+    /* Ajout de l'espace sous la navbar */
+    .main-content {
+      flex: 1;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      align-items: center;
+      padding-top: 80px; /* Espace sous la navbar */
+      padding-bottom: 20px; /* Espace au-dessus du footer */
+    }
+
+    /* Styles pour les messages */
+    .confirmation-message {
+      text-align: center;
+      font-size: 1.5rem;
+      color: #343a40;
+      margin-top: 20px;
+    }
+    .response {
+      font-size: 1.2rem;
+      text-align: center;
+      margin-top: 10px;
+    }
+
+    /* Styles pour le footer */
+    footer {
+      background-color: #343a40;
+      color: #b0b0b0;
+      padding-top: 20px;
+      padding-bottom: 20px;
+      text-align: center;
+    }
+    footer h5 {
+      font-weight: bold;
+      margin-bottom: 20px;
+    }
+    footer p, footer ul {
+      color: #b0b0b0;
+    }
+    .btn-logo {
+      background-color: #6f42c1;
+      color: white;
+      border-radius: 30px;
+      padding: 8px 20px;
+      font-size: 1.1rem;
+      font-weight: bold;
+    }
+    .btn-logo:hover {
+      background-color: #5a34a4;
+      color: white;
+    }
+    
+  </style>
+</head>
+<body>
+
+  <!-- Navbar -->
+  <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top shadow-sm">
+    <div class="container">
+      <a href="{% url 'index' %}" class="navbar-brand btn-logo">ACDH Service</a>
+      <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarToggler" aria-controls="navbarToggler" aria-expanded="false" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+      <div class="collapse navbar-collapse" id="navbarToggler">
+        <ul class="navbar-nav ms-auto mb-2 mb-lg-0">
+          <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'index' %}">ACCUEIL</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'temo' %}">Témoignages</a></li>
+          <li class="nav-item"><a class="nav-link fw-bold" href="{% url 'propos' %}">À propos</a></li>
+        </ul>
+      </div>
+    </div>
+  </nav>
+
+  <!-- Contenu Principal -->
+  <div class="main-content">
+    <div class="container">
+      <header class="confirmation-message">
+        {% if nom %}
+          <p class="fw-bold">Merci <span class="text-primary">{{ nom }} {{prenom}}</span>, nous avons reçu votre message.</p>
+        {% else %}
+          Envoyez-nous un message <a href="{% url 'postuler' %}">ici</a>.
+        {% endif %}
+      </header>
+      
+      {% if email %}
+      <div class="response fw-bold">😊 Nous vous répondrons dans les 72h à l'adresse e-mail suivante : <span class="text-primary">{{ email }}</span>.</div> 
+      {% endif %}
+    </div>
+  </div>
+
+  <!-- Pied de page -->
+  <footer class="bg-dark text-white">
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4 text-center text-md-start mb-4">
+          <h5>À propos de nous</h5>
+          <p>Nous sommes une organisation dédiée à fournir des services de qualité et à soutenir la communauté. Rejoignez-nous pour faire une différence.</p>
+        </div>
+        <div class="col-md-4 text-center text-md-start mb-4">
+          <h5>Liens utiles</h5>
+          <ul class="list-unstyled">
+            <li><a href="{% url 'index' %}" class="text-white text-decoration-none">Accueil</a></li>
+            <li><a href="{% url 'temo' %}" class="text-white text-decoration-none">Témoignages</a></li>
+            <li><a href="{% url 'propos' %}" class="text-white text-decoration-none">À propos</a></li>
+          </ul>
+        </div>
+        <div class="col-md-4 text-center text-md-start mb-4">
+          <h5>Suivez-nous</h5>
+          <ul class="list-inline">
+            <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">Facebook</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">Twitter</a></li>
+            <li class="list-inline-item"><a href="#" class="text-white text-decoration-none">LinkedIn</a></li>
+          </ul>
+        </div>
+      </div>
+      <hr class="bg-light">
+      <p class="mb-0">&copy; 2024 ACDH Service. Tous droits réservés.</p>
+    </div>
+  </footer>
+
+  <script src="{% static 'bootstrap/bootstrap.bundle.min.js' %}"></script>
+</body>
+</html>
